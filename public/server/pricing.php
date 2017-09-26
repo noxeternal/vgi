@@ -32,7 +32,7 @@ class priceGuide{
 
     if(count($m['price']) == 3){
       for($i=0;$i<3;$i++){
-        $o[$m['condition'][$i]] = $m['price'][$i];
+        $o[$m['condition'][$i]] = (float)$m['price'][$i];
       }
       return $o;
     }else{
