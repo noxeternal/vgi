@@ -19,7 +19,7 @@ function checkLink ($console, $game) {
   $url = baseURL.$console.'/'.$game;
   preg_match_all(regex, file_get_contents($url),$m);
 
-  echo str_pad($console.'/'.$game, 60, ' ', STR_PAD_LEFT), ': ';
+  echo str_pad($console.'/'.$game, 60, ' ', STR_PAD_RIGHT);
 
   if(count($m['price']) == 3){
     foreach($m['price'] as $i => $p)
@@ -38,10 +38,11 @@ $gamesInventory = $db->query(
   FROM `item` 
   LEFT JOIN `console` 
     ON(`itemConsole` = `conID`) 
-  WHERE `itemLink` != '' ");
+  WHERE `itemLink` != '' 
+  ORDER BY `conID`");
 if($db->error) die($db->error);
 
-echo "<html>\n<head>\n<title>LinkCheck</title>>\n</head>\n<body style=\"white-space:pre\">\n";
+echo "<html>\n<head>\n<title>LinkCheck</title>\n</head>\n<body style=\"white-space:pre;font-family:monospace;\">\n";
 
 foreach($gamesInventory as $row){
   echo str_pad($i, 4, ' ', STR_PAD_LEFT),') ';
