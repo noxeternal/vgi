@@ -1,0 +1,10 @@
+icon {
+  color: black;
+}
+
+icon[name="star"] {
+  color: #FFFF00;
+  -webkit-text-stroke: 1px black;
+}
+
+

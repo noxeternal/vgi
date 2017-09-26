@@ -1,0 +1,29 @@
+@import 'font-awesome.min.css';
+/* START GENERATED IMPORTS */
+@import '../forms/toolbox/index.css';
+@import '../directives/gameinfo/index.css';
+@import '../directives/icon/index.css';
+/* END GENERATED IMPORTS */
+
+
+*{
+  font-family: sans-serif;
+  white-space: nowrap;
+}
+
+.sheet{
+  display: flex;
+  margin-top: 25px;
+}
+
+.column{
+  
+}
+
+.title{
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  text-align: center;
+  min-width: 300px;
+}

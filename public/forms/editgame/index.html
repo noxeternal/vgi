@@ -1,0 +1,62 @@
+<div ng-controller="vgEdit as edit">
+  <form name="editGameForm" id="editGameForm" ng-model="editGameForm" onsubmit="return false">
+    <table>
+    <tr>
+      <th>Name</th>
+      <th>Style</th>
+      <th>Link</th>
+      <th>Category</th>
+      <th>Console</th>
+      <th>Condition</th>
+      <th><icon name="cube"></icon></th>
+      <th><icon name="book"></icon></th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" name="name" class="sortList textInput checkField" ng-model="edit.name" required>
+      </td>
+      <td>
+        <select name="style" class="sortList" ng-model="edit.style">
+          <option value="{{style.id}}" ng-repeat="style in edit.enumData.styles">{{style.name}}</option>
+        </select>
+      </td>
+      <td class="c"><input type="text" name="link" size="15" ng-model="edit.link.string"></td>
+      <td>
+        <select name="category" class="sortList checkField" ng-model="edit.category" required>
+          <option value="{{category.id}}" ng-repeat="category in edit.enumData.categories">{{category.text}}</option>
+        </select>
+      </td>
+      <td>
+        <select name="console" class="sortList checkField" ng-model="edit.console" required>
+          <option value="{{console.id}}" ng-repeat="console in edit.enumData.consoles">{{console.text}}</option>
+        </select>
+      </td>
+      <td>
+        <select name="condition" class="sortList checkField" ng-model="edit.condition" required>
+          <option value="{{condition.id}}" ng-repeat="condition in edit.enumData.conditions">{{condition.text}}</option>
+        </select>
+      </td>
+      <td><input type="checkbox" name="box" value="1" ng-model="edit.box"></td>
+      <td><input type="checkbox" name="manual" value="1" ng-model="edit.manual"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="name" style="{{edit.dispStyle()}}">{{edit.name}}&nbsp;</td>
+      <td class="c"><a href="{{edit.link.displayString}}" target="_new" ng-show="edit.link.displayString">link</a></td>
+      <td class="category c">{{edit.dispCategory()}}</td>
+      <td class="console c">{{edit.dispConsole()}}</td>
+      <td class="condition c">{{edit.dispCondition()}}</td>
+      <td class="c box"><span ng-show="edit.box">X</span></td>
+      <td class="c manual"><span ng-show="edit.manual">X</span></td>
+    </tr>
+    <tr>
+      <td colspan="8" class="noBorder r">
+        <input type="hidden" name="action" value="insert">
+        <input type="button" name="ang-submit" value="Edit Game" ng-click="edit.submit()">
+        <!-- <input type="button" name="ang-testlookup" value="Lookup Test" ng-click="edit.ops.findGame(21)">
+        <input type="button" name="ang-testedit" value="Edit Test" ng-click="edit.ops.editGame(game)">
+        <input type="submit"> -->
+      </td>
+    </tr>
+    </table>
+  </form>
+</div>

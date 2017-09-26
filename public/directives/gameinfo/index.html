@@ -1,0 +1,37 @@
+<div class="cell" style="{{game.style.style}}">
+  <div class="indexIcon">
+    &bigtriangledown;
+    <div class="info">
+      <div class="infoRow">
+        <div class="infoTitle">Condition:</div>
+        <div class="infoText">{{game.condition.text}}</div>
+      </div>
+      <div class="infoRow" ng-show="game.value">
+        <div class="infoTitle">Value:</div>
+        <div class="infoText">{{game.value.amount | currency }}</div>
+      </div>
+      <div class="infoRow">
+        <div class="infoTitle">Box:</div>
+        <div class="infoText"><icon ng-show="game.box" name="cube"></icon><span ng-hide="game.box">--</span></div>
+      </div>
+      <div class="infoRow">
+        <div class="infoTitle">Manual:</div>
+        <div class="infoText"><icon ng-show="game.manual" name="book"></icon><span ng-hide="game.manual">--</span></div>
+      </div>
+      <div class="infoRow">
+        <div class="infoTitle">Extras:</div>
+        <div class="infoText"><span ng-show="game.extras"><div ng-repeat="extra in game.extras">{{extra.text}}</div></span><span ng-hide="game.extras">None</span></div>
+      </div>
+      <div class="infoRow">
+        <div class="infoTitle">Actions</div>
+        <div class="infoText"><a href="#" ng-click="display.setEditGame(game.id)">Edit</a></div>
+      </div>
+      <!--div class="infoRow">
+        <div class="infoTitle"></div>
+        <div class="infoText"></div>
+      </div-->
+    </div>
+  </div>
+  <div class="game">{{game.name}}</div>
+  <div class="stat"><icon name="{{game.icon}}"></icon></div>
+</div>

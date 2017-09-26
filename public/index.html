@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="videoGameInventory">
+<head>
+  <title>Video Game Inventory</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-ui-router.min.js"></script>
+  <script src="js/angular-animate.min.js"></script>
+  
+  <script src="js/forms.js"></script>
+  <script src="js/directives.js"></script>
+
+<!-- START GENERATED SCRIPT TAGS -->
+ <script src="classes/enumData/index.js"></script>
+ <script src="classes/vgAdd/index.js"></script>
+ <script src="classes/vgDisplay/index.js"></script>
+ <script src="classes/vgEditFactory/index.js"></script>
+ <script src="classes/vgEdit/index.js"></script>
+ <script src="forms/addgame/index.js"></script>
+ <script src="forms/editgame/index.js"></script>
+ <script src="forms/toolbox/index.js"></script>
+ <script src="directives/gameinfo/index.js"></script>
+ <script src="directives/icon/index.js"></script>
+<!-- END GENERATED SCRIPT TAGS -->
+
+  <script src="js/init.js"></script>
+
+</head>
+<body ng-controller="vgDisplay as display">
+  <div class="toolbox">
+    <div class="tab">
+      <div class="tabTitle">search tools</div>
+      <div class="content search" ng-include="'forms/toolbox'"></div>
+    </div>
+    <div class="tab">
+      <div class="tabTitle">add game</div>
+      <div class="content addgame" ng-include="'forms/addgame'"></div>
+    </div>
+    <div class="tab" ng-show="display.editFactory.get()">
+      <div class="tabTitle">edit game {{display.editFactory.get()}}</div>
+      <div class="content addgame" ng-include="'forms/editgame'"></div>
+    </div>
+  </div>
+  <div class="sheet">
+      <div class="column" ng-repeat="console in display.showGames()" ng-hide="console.games.length===0">
+        <div class="title">{{console.text}} ({{console.games.length}})</div>
+        <div ng-repeat="game in console.games track by $index">
+          <game-info game="game"></game-info>
+        </div>
+        <div ng-repeat="n in console.blankLines track by $index" class="empty cell"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

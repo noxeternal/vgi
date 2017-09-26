@@ -1,0 +1,36 @@
+<div>
+  <div class="search">
+    Search: <input type="text" ng-model="display.nameFilter" size="30">
+    <div class="refresh" ng-click="display.refreshEnumData()" ng-class="{rotate: display.refreshing}"></div>
+  </div>
+  <div class="options">
+    <div class="toolGroup">Console:<br>
+      <select size="5" multiple ng-model="display.consoleList">
+        <option value="" selected>All</option>
+        <option ng-repeat="console in display.enumData.consoles | orderBy:'order'" value="{{console.text}}">{{console.text}}</option>
+      </select>
+    </div>
+    <div class="toolGroup">
+      <div class="toolTitle">Condition</div>
+      <select size="5" multiple ng-model="display.conditionList" class="fixed">
+        <option value="" selected>All</option>
+        <option ng-repeat="condition in display.enumData.conditions" value="{{condition.text}}">{{condition.text}}</option>
+      </select>
+    </div>
+    <div class="toolGroup">
+      <div class="toolTitle">Category</div>
+      <select size="5" multiple ng-model="display.categoryList" class="fixed">
+        <option value="" selected>All</option>
+        <option ng-repeat="category in display.enumData.categories" value="{{category.text}}">{{category.text}}</option>
+      </select>
+    </div>
+    <!-- div class="toolGroup">
+      <div class="toolTitle">Contains</div>
+      <select size="5" multiple class="fixed" ng-model="display.contentsList">
+        <option value="" selected>All</option>
+        <option value="manual">Manual</option>
+        <option value="box">Box</option>
+        <option value="extras">Extras</option>
+      </select>
+    </div-->
+</div>
