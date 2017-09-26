@@ -13,4 +13,8 @@ function esc($s){
   return $GLOBALS['db']->real_escape_string($s);
 }
 
+define('baseURL', 'https://www.pricecharting.com/game/');
+define('regex', '/.*<td id="(?P<condition>[a-z]+)_price">\s.*>\s*\$(?P<price>[0-9.]+)\s+<\/span>/');
+
+
 ?>

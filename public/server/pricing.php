@@ -9,8 +9,6 @@ function p($s){
 
 
 class priceGuide{
-  private $baseURL = 'https://www.pricecharting.com/game/';
-
   public  $game,
           $console,
           $condition;
@@ -22,17 +20,13 @@ class priceGuide{
   }
   
   function getPrice($format = 'json'){
-    // $regex = '/.*<td id="'.$g->condition.'_price">\s.*>\s*\$(?P<price>[0-9.]+)\s+<\/span>/';
-    
     return $this->getAllPrices()[$this->condition];
   }
 
   function getAllPrices(){
-    $regex = '/.*<td id="(?P<condition>[a-z]+)_price">\s.*>\s*\$(?P<price>[0-9.]+)\s+<\/span>/';
+    $url = baseURL.$this->console.'/'.$this->game;
 
-    $url = $this->baseURL.$this->console.'/'.$this->game;
-
-    preg_match_all($regex, file_get_contents($url),$m);
+    preg_match_all(regex, file_get_contents($url),$m);
 
     // p($m);
 
@@ -57,8 +51,8 @@ $gamesInventory = $db->query(
     ON(`itemConsole` = `conID`) 
   LEFT JOIN `condition` 
     ON(`itemCond` = `condID`) 
-  WHERE `condText` NOT LIKE 'digital'
-    AND itemLink != '' ");
+  WHERE itemLink != ''
+    AND itemDeleted = 0");
 if($db->error) die($db->error);
 
 foreach($gamesInventory as $row){

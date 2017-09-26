@@ -11,10 +11,6 @@ function m($a){
   return str_pad($a, 7, ' ', STR_PAD_LEFT);
 }
 
-define('baseURL', 'https://www.pricecharting.com/game/');
-define('regex', '/.*<td id="(?P<condition>[a-z]+)_price">\s.*>\s*\$(?P<price>[0-9.]+)\s+<\/span>/');
-
- 
 function checkLink ($console, $game) {
   $url = baseURL.$console.'/'.$game;
   preg_match_all(regex, file_get_contents($url),$m);
@@ -39,6 +35,7 @@ $gamesInventory = $db->query(
   LEFT JOIN `console` 
     ON(`itemConsole` = `conID`) 
   WHERE `itemLink` != '' 
+    AND `itemDeleted` = 0
   ORDER BY `conID`");
 if($db->error) die($db->error);
 
