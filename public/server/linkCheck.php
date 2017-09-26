@@ -23,8 +23,8 @@ function checkLink ($console, $game) {
 
   if(count($m['price']) == 3){
     foreach($m['price'] as $i => $p)
-      $m['price'][$i] = m($p);
-    echo implode(' | ', $m['price']);
+      $prices[$i] = m($p);
+    echo implode(' | ', $prices);
   }else{
     echo '<a href="',$url,'" target="_game">Price error</a>';
   }
