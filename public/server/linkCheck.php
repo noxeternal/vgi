@@ -16,7 +16,7 @@ function checkLink ($console, $game) {
   $url = baseURL.$console.'/'.$game;
   preg_match_all(regex, file_get_contents($url),$m);
 
-  echo str_pad($console.'/'.$game, 50, STR_PAD_LEFT), ': ';
+  echo str_pad($console.'/'.$game, 50, ' ', STR_PAD_LEFT), ': ';
 
   if(count($m['price']) == 3){
     echo implode(' | ', $m['price']);
