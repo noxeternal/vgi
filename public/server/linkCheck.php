@@ -26,7 +26,7 @@ function checkLink ($console, $game) {
       $m['price'][$i] = m($p);
     echo implode(' | ', $m['price']);
   }else{
-    echo 'Price error';
+    echo '<a href="',$url,'" target="_game">Price error</a>';
   }
   echo "\n";
 }
@@ -34,17 +34,15 @@ function checkLink ($console, $game) {
 $i = 0;
 
 $gamesInventory = $db->query(
-  "SELECT `itemID`,`itemLink`,`conLink`,`condText` 
+  "SELECT `itemID`,`itemLink`,`conLink`
   FROM `item` 
   LEFT JOIN `console` 
     ON(`itemConsole` = `conID`) 
-  LEFT JOIN `condition` 
-    ON(`itemCond` = `condID`) 
   WHERE `itemLink` != '' ");
 if($db->error) die($db->error);
 
 foreach($gamesInventory as $row){
-  echo $i,') ';
+  echo str_pad($i, 4, ' ', STR_PAD_LEFT),') ';
   $id = $row['itemID'];
 
   checkLink( $row['conLink'], $row['itemLink']);
