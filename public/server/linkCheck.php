@@ -41,6 +41,8 @@ $gamesInventory = $db->query(
   WHERE `itemLink` != '' ");
 if($db->error) die($db->error);
 
+echo "<html>\n<head>\n<title>LinkCheck</title>>\n</head>\n<body style=\"white-space:pre\">\n";
+
 foreach($gamesInventory as $row){
   echo str_pad($i, 4, ' ', STR_PAD_LEFT),') ';
   $id = $row['itemID'];
@@ -49,7 +51,7 @@ foreach($gamesInventory as $row){
   $i++;
 }
 
-echo "\nFin.";
+echo "\nFin.\n</body></html>";
 
 
 ?>
