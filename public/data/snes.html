@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="snes-mini">
+<head>
+  <title>SNES Game List</title>
+
+  <script>
+    class snesMini {
+      constructor ($http) {
+        this.snesGames = []
+
+        $http.get('data/snes.json')
+          .then(res => {
+            this.snesGames = res.data
+          })
+      }
+    }
+
+    let app = angular.module('snesMini', [])
+    app.controller('display', ['$http', snesMini])
+    
+  </script>
+</head>
+<body ng-controller="display as d">
+  <div ng-repeat="g in d.snesGames">g</div>
+</body>
+</html>
