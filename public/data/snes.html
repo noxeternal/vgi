@@ -9,7 +9,7 @@
       constructor ($http) {
         this.snesGames = []
 
-        $http.get('data/snes.json')
+        $http.get('snes.json')
           .then(res => {
             this.snesGames = res.data
           })
