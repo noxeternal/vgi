@@ -30,7 +30,28 @@ class enumData {
 
   mergeData () {
     this.games.forEach((g) => {
-      let thisConsole = this.consoles.find(con => g.console === con.id)
+      if (g.style !== '0') {
+        let thisStyle = this.styles.find(s => g.style === s.name)
+        g.style = thisStyle.text
+      }
+
+      if (g.condition === 'used') {
+        if (g.box) { g.icon = 'cube' }
+        if (g.manual) { g.icon = 'book' }
+      } else {
+        if (g.condition === 'digital') { g.icon = 'floppy-o' }
+        if (g.condition === 'complete') { g.icon = 'paste' }
+        if (g.condition === 'new') { g.icon = 'star' }
+      }
+
+      let extras = this.extras.filter(extra => g.id === extra.item)
+      g.extras = extras
+    })
+
+    return
+
+    this.games.forEach((g) => {
+      let thisConsole = this.consoles.find(con => g.console === con.text)
       g.console = {
         'id': thisConsole.id,
         'text': thisConsole.text
@@ -46,26 +67,6 @@ class enumData {
           'amount': thisValue.value
         }
       }
-
-      if (g.condition.text === 'used') {
-        if (g.box) { g.icon = 'cube' }
-        if (g.manual) { g.icon = 'book' }
-      } else {
-        if (g.condition.text === 'digital') { g.icon = 'floppy-o' }
-        if (g.condition.text === 'complete') { g.icon = 'paste' }
-        if (g.condition.text === 'new') { g.icon = 'star' }
-      }
-
-      if (g.style !== 0) {
-        let thisStyle = this.styles.find(style => g.style === style.id)
-        g.style = {
-          'id': thisStyle.id,
-          'style': thisStyle.text
-        }
-      }
-
-      let extras = this.extras.filter(extra => g.id === extra.item)
-      g.extras = extras
     })
   }
 }

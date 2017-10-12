@@ -39,7 +39,7 @@ class vgDisplay {
 
     this.enumData.consoles.forEach(con => {
       con.games = filteredGames.filter(game => {
-        return game.console.text === con.text
+        return game.console === con.text
       })
       byConsole.push(con)
     })
@@ -64,7 +64,7 @@ class vgDisplay {
       if (this[f + 'List'].length === 0 || (this[f + 'List'].length === 1 && this[f + 'List'].indexOf('') === 0)) { return true }
 
       games = games.filter(game => {
-        return this[f + 'List'].indexOf(game[f].text) >= 0
+        return this[f + 'List'].indexOf(game[f]) >= 0
       })
     })
 
@@ -75,6 +75,13 @@ class vgDisplay {
     }
 
     return games
+  }
+
+  getStyle (s) {
+    let styles = this.enumData.styles
+    let thisStyle = styles.find((style) => style.name === s)
+    console.log(s + ' :: ' + thisStyle)
+    return thisStyle
   }
 
   setEditGame (id) {

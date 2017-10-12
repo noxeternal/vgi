@@ -17,23 +17,23 @@
       </td>
       <td>
         <select name="style" class="sortList" ng-model="add.style">
-          <option value="{{style.id}}" ng-repeat="style in add.enumData.styles">{{style.name}}</option>
+          <option value="{{style.name}}" ng-repeat="style in add.enumData.styles">{{style.name}}</option>
         </select>
       </td>
       <td class="c"><input type="text" name="link" size="15" ng-model="add.link.string"></td>
       <td>
         <select name="category" class="sortList checkField" ng-model="add.category" required>
-          <option value="{{category.id}}" ng-repeat="category in add.enumData.categories">{{category.text}}</option>
+          <option value="{{category.text}}" ng-repeat="category in add.enumData.categories">{{category.text}}</option>
         </select>
       </td>
       <td>
         <select name="console" class="sortList checkField" ng-model="add.console" required>
-          <option value="{{console.id}}" ng-repeat="console in add.enumData.consoles">{{console.text}}</option>
+          <option value="{{console.text}}" ng-repeat="console in add.enumData.consoles">{{console.text}}</option>
         </select>
       </td>
       <td>
         <select name="condition" class="sortList checkField" ng-model="add.condition" required>
-          <option value="{{condition.id}}" ng-repeat="condition in add.enumData.conditions">{{condition.text}}</option>
+          <option value="{{condition.text}}" ng-repeat="condition in add.enumData.conditions">{{condition.text}}</option>
         </select>
       </td>
       <td><input type="checkbox" name="box" value="1" ng-model="add.box"></td>
@@ -42,9 +42,9 @@
     <tr>
       <td colspan="2" class="name" style="{{add.dispStyle()}}">{{add.name}}&nbsp;</td>
       <td class="c"><a href="{{add.link.displayString}}" target="_new" ng-show="add.link.displayString">link</a></td>
-      <td class="category c">{{add.dispCategory()}}</td>
-      <td class="console c">{{add.dispConsole()}}</td>
-      <td class="condition c">{{add.dispCondition()}}</td>
+      <td class="category c">{{add.category}}</td>
+      <td class="console c">{{add.console}}</td>
+      <td class="condition c">{{add.condition}}</td>
       <td class="c box"><span ng-show="add.box">X</span></td>
       <td class="c manual"><span ng-show="add.manual">X</span></td>
     </tr>

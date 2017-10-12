@@ -33,7 +33,7 @@ class vgAdd {
     if (cond) return cond.text
   }
   dispStyle () {
-    let style = this.enumData.styles.find((style) => style.id.toString() === this.style)
+    let style = this.enumData.styles.find((style) => style.name === this.style)
     if (style) return style.text
   }
 

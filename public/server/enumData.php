@@ -19,7 +19,7 @@ foreach($result as $row){
   ];
 }
 
-$sql = "SELECT `console`.*,COUNT(`itemID`) AS `conCount` FROM `console` LEFT JOIN `item` ON (`conID` = `itemConsole`) WHERE `item`.`itemDeleted` = 0 GROUP BY `item`.`itemConsole` ORDER BY `console`.`conOrderBy`";
+$sql = "SELECT `console`.*,COUNT(`itemID`) AS `conCount` FROM `console` LEFT JOIN `item` ON (`conText` = `itemConsole`) WHERE `item`.`itemDeleted` = 0 GROUP BY `item`.`itemConsole` ORDER BY `console`.`conOrderBy`";
 $result = $db->query($sql);
 foreach($result as $row){
   $o['consoles'][] = [
@@ -58,12 +58,12 @@ foreach($result as $row){
     'id'        => floatval($row['itemID']),
     'name'      => $row['itemName'],
     'link'      => $row['itemLink'],
-    'console'   => floatval($row['itemConsole']),
-    'category'  => floatval($row['itemCat']),
-    'condition' => floatval($row['itemCond']),
+    'console'   => ($row['itemConsole']),
+    'category'  => ($row['itemCat']),
+    'condition' => ($row['itemCond']),
     'box'       => floatval($row['itemBox']),
     'manual'    => floatval($row['itemManual']),
-    'style'     => floatval($row['itemStyle'])
+    'style'     => ($row['itemStyle'])
   ];
 }
 
