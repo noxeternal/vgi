@@ -13,7 +13,8 @@ class vgAdd {
       string: '',
       get displayString () {
         let thisConsole = false
-        if (this.parent.console) { thisConsole = this.parent.enumData.consoles.find(con => con.id.toString() === this.parent.console) }
+
+        if (this.parent.console) { thisConsole = this.parent.enumData.consoles.find(con => con.text === this.parent.console) }
 
         if (thisConsole && this.string) { return `https://www.pricecharting.com/game/${thisConsole.link}/${this.string}` } else { return false }
       }

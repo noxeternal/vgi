@@ -5,9 +5,18 @@
 @import '../directives/icon/index.css';
 /* END GENERATED IMPORTS */
 
+@font-face {
+  font-family: 'DroidSans';
+  src:  url('../fonts/DroidSans.ttf');
+}
+@font-face {
+  font-family: 'DroidSans';
+  font-weight: bold;
+  src:  url('../fonts/DroidSans-Bold.ttf');
+}
 
 *{
-  font-family: sans-serif;
+  font-family: 'DroidSans', sans-serif;
   white-space: nowrap;
 }
 
