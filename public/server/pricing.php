@@ -48,9 +48,9 @@ $gamesInventory = $db->query(
   "SELECT `itemID`,`itemLink`,`conLink`,`condText` 
   FROM `item` 
   LEFT JOIN `console` 
-    ON(`itemConsole` = `conID`) 
+    ON(`itemConsole` = `conText`) 
   LEFT JOIN `condition` 
-    ON(`itemCond` = `condID`) 
+    ON(`itemCond` = `condText`) 
   WHERE itemLink != ''
     AND itemDeleted = 0");
 if($db->error) die($db->error);

@@ -67,7 +67,7 @@ foreach($result as $row){
   ];
 }
 
-$sql = "SELECT valID,itemID,valAmount,MAX(valLastCheck) as valLastCheck FROM value GROUP BY itemID";
+$sql = "SELECT valID,itemID,valAmount,MAX(valLastCheck) as valLastCheck FROM value LEFT JOIN item USING(itemID) WHERE item.itemDeleted = 0 GROUP BY itemID";
 $result = $db->query($sql);
 foreach($result as $row){
   $o['values'][] = [

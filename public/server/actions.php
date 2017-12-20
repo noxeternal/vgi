@@ -25,7 +25,7 @@ function fail($code,$msg,$data=null){
     'result'  =>  null,
     'error'   =>  [
       'code'  =>  $code,
-      'msg' =>  $msg,
+      'msg'   =>  $msg,
       'data'  =>  $data
     ]
   ]));
@@ -38,17 +38,17 @@ $data = json_decode($json, true);
 require_once('../../init.php');
 
 $map = [
-  // 'id'   => 'itemID',
-  'name'    => 'itemName',
-  'link'    => 'itemLink',
+  // 'id'     => 'itemID',
+  'name'      => 'itemName',
+  'link'      => 'itemLink',
   'console'   => 'itemConsole',
   'category'  => 'itemCat',
   'condition' => 'itemCond',
-  'box'     => 'itemBox',
-  'manual'  => 'itemManual',
-  'extras'  => 'itemExtras',
-  'style'   => 'itemStyle',
-  'delete'  => 'itemDeleted'
+  'box'       => 'itemBox',
+  'manual'    => 'itemManual',
+  'extras'    => 'itemExtras',
+  'style'     => 'itemStyle',
+  'delete'    => 'itemDeleted'
 ];
 
 foreach($data as $k => $v)

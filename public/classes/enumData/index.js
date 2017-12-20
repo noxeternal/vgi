@@ -46,19 +46,6 @@ class enumData {
 
       let extras = this.extras.filter(extra => g.id === extra.item)
       g.extras = extras
-    })
-
-    return
-
-    this.games.forEach((g) => {
-      let thisConsole = this.consoles.find(con => g.console === con.text)
-      g.console = {
-        'id': thisConsole.id,
-        'text': thisConsole.text
-      }
-
-      g.category = this.categories.find(cat => g.category === cat.id)
-      g.condition = this.conditions.find(cond => g.condition === cond.id)
 
       let thisValue = this.values.find(value => g.id === value.item)
       if (thisValue) {
@@ -66,7 +53,29 @@ class enumData {
           'id': thisValue.id,
           'amount': thisValue.value
         }
+        console.log('Value', g)
       }
     })
+
+    // return
+
+    // this.games.forEach((g) => {
+    //   let thisConsole = this.consoles.find(con => g.console === con.text)
+    //   g.console = {
+    //     'id': thisConsole.id,
+    //     'text': thisConsole.text
+    //   }
+
+    //   g.category = this.categories.find(cat => g.category === cat.id)
+    //   g.condition = this.conditions.find(cond => g.condition === cond.id)
+
+    //   let thisValue = this.values.find(value => g.id === value.item)
+    //   if (thisValue) {
+    //     g.value = {
+    //       'id': thisValue.id,
+    //       'amount': thisValue.value
+    //     }
+    //   }
+    // })
   }
 }
