@@ -8,54 +8,61 @@
       white-space: pre;
     }
   </style>
+
 </head>
 <body>
-  <div>Assuming CSV:</div>
-  <div class="pre">
-    widget,region,store,total sales
-    a,1,1,10
-    b,1,1,15
-    c,1,1,2
-    a,1,3,12
-    c,2,15,100
-  </div>
-  <br><br>
+<input name="txt" id="txt" type="file">
+<pre id="out"></pre>
+<pre id="report"></pre>
+  <script>
+    var fileInput = document.getElementById('txt')
+    var reader = new FileReader()
+    var report = document.getElementById('report')
+    var output = document.getElementById('out')
+    var fileHeader
+    var userData = []
 
-<table>
-  <tr>
-    <td>Attribute</td>
-    <td>Operation</td>
-    <td>Grouping</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>
-      <select>
-        <option>widget</option>
-        <option>region</option>
-        <option>store</option>
-        <option>total sales</option>
-      </select>
-    </td>
-    <td>
-      <select>
-        <option>SUM</option>
-        <option>AVERAGE</option>
-        <option>SORT</option>
-      </select>
-    </td>
-    <td>
-      <select>
-        <option>none</option>
-        <option>widget</option>
-        <option>region</option>
-        <option>store</option>
-        <option>total sales</option>
-      </select>
-    </td>
-    <td>
-      <button>Generate Report</button>
-    </td>
-  </tr>
+    function processFile () {
+
+      reader.onload = function (event) {
+        var contents = reader.result
+        var lines = contents.split('\n')
+        for (var i = 0; i < lines.length; i++) {
+          if (i === 0) {
+            fileHeader = lines[i].split(',')
+          } else {
+            userData[i] = lines[i].split(',')
+            var newText = document.createTextNode(userData[i].join(' ') + '\n')
+            output.appendChild(newText)
+          }
+        }
+
+        buildReportQ()
+      }
+
+      reader.readAsBinaryString(fileInput.files[0])
+    }
+
+    function buildSelect (id, none) {
+      var html = '<select id="' + id + '">'
+      if (none) {
+        html = html + '<option>None</option>'
+      }
+      fileHeader.forEach(function (attr) {
+        html = html + '\n<option value="' + attr + '">' + attr + '</option>'
+      })
+      html = html + '\n</select>'
+      return html
+    }
+
+    function buildReportQ () {
+      var reportQ = 'SELECT ATTRIBUTE: ' + buildSelect('attribute', false) +
+        '\nSELECT OPERATION: <select name="operation"><option>SUM</option><option>AVERAGE</option></select>' +
+        '\nSELECT GROUPING: ' + buildSelect('groupby', true)
+      report.innerHTML = reportQ
+    }
+
+    fileInput.addEventListener('change', processFile)
+  </script>
 </body>
 </html>
