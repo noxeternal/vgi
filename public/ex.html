@@ -2,10 +2,16 @@
 <html>
 <head>
   <title>Example</title>
+  <style type="text/css">
+    .pre {
+      font-family: monospace;
+      white-space: pre;
+    }
+  </style>
 </head>
 <body>
   <div>Assuming CSV:</div>
-  <div style="font-family:fixed-width">
+  <div class="pre">
     widget,region,store,total sales
     a,1,1,10
     b,1,1,15
@@ -13,6 +19,43 @@
     a,1,3,12
     c,2,15,100
   </div>
+  <br><br>
 
+<table>
+  <tr>
+    <td>Attribute</td>
+    <td>Operation</td>
+    <td>Grouping</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <select>
+        <option>widget</option>
+        <option>region</option>
+        <option>store</option>
+        <option>total sales</option>
+      </select>
+    </td>
+    <td>
+      <select>
+        <option>SUM</option>
+        <option>AVERAGE</option>
+        <option>SORT</option>
+      </select>
+    </td>
+    <td>
+      <select>
+        <option>none</option>
+        <option>widget</option>
+        <option>region</option>
+        <option>store</option>
+        <option>total sales</option>
+      </select>
+    </td>
+    <td>
+      <button>Generate Report</button>
+    </td>
+  </tr>
 </body>
 </html>
