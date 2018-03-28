@@ -46,7 +46,7 @@
   <div class="sheet">
       <div class="column" ng-repeat="console in display.showGames()" ng-hide="console.games.length===0">
         <div class="title">{{console.text}} ({{console.games.length}})</div>
-        <div ng-repeat="game in console.games track by $index">
+        <div ng-repeat="game in console.games track by $index" class="cell">
           <game-info game="game"></game-info>
         </div>
         <div ng-repeat="n in console.blankLines track by $index" class="empty cell"></div>
