@@ -1,6 +1,7 @@
 .cell{
   border: 1px solid black;
   border-top: 0;
+  height: 23px;
 }
 
 .cell.empty{
@@ -9,6 +10,7 @@
 
 .cell.game{
   padding: 2px 10px 3px;
+  border: 0;
 }
 
 .indexIcon{
