@@ -1,11 +1,14 @@
 .cell{
   border: 1px solid black;
   border-top: 0;
-  padding: 2px 10px 3px;
 }
 
 .cell.empty{
   height: 19px;
+}
+
+.cell.game{
+  padding: 2px 10px 3px;
 }
 
 .indexIcon{
