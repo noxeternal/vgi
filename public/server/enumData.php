@@ -1,6 +1,9 @@
 <?php
-
-require_once('../../init.php');
+try {
+  require_once('../../init.php');
+}catch(Throwable $t){
+  die(print_r($t, true));
+}
 
 $o = [
   'categories'  => [],
