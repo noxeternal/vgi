@@ -17,5 +17,4 @@ define('baseURL', 'https://www.pricecharting.com/game/');
 // define('regex', '/.*<td id="(?P<condition>[a-z]+)_price">\s.*>\s*\$(?P<price>[0-9.]+)\s+<\/span>/');
 define('regex', '/.*<td id="(?P<condition>[a-z]+)_price">\s.*>\s*\$*(?P<price>([0-9.]+|N\/A))\s+<\/span>/');
 
-
 ?>
