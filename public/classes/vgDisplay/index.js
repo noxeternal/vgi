@@ -3,9 +3,7 @@ class vgDisplay {
   constructor ($rootScope, enumData, vgEditFactory) {
     this.root = $rootScope
     this.filters = [
-      'console',
-      'condition',
-      'category'
+      'console', 'condition', 'category'
     ]
     this.resetFilter()
     this.enumData = enumData
